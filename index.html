@@ -93,15 +93,6 @@
             font-size: 0.95em;
         }
         
-        .no-school {
-            border-left-color: #e74c3c;
-            background: #ffebee;
-        }
-        
-        .no-school:hover {
-            background: #ffcdd2;
-        }
-        
         .parent-event {
             border-left-color: #3498db;
             background: #e3f2fd;
@@ -118,6 +109,25 @@
         
         .field-trip:hover {
             background: #c8e6c9;
+        }
+        
+        .all-school {
+            border-left-color: #ff9800;
+            background: #fff3e0;
+        }
+        
+        .all-school:hover {
+            background: #ffe0b2;
+        }
+        
+        /* No-school must come after all-school to override it */
+        .no-school {
+            border-left-color: #e74c3c !important;
+            background: #ffebee !important;
+        }
+        
+        .no-school:hover {
+            background: #ffcdd2 !important;
         }
         
         .legend {
@@ -147,6 +157,7 @@
         .color-parent { background: #3498db; }
         .color-trip { background: #2ecc71; }
         .color-regular { background: #667eea; }
+        .color-all-school { background: #ff9800; }
         
         .filters {
             padding: 20px;
@@ -191,6 +202,30 @@
         
         .event.hidden {
             display: none;
+        }
+        
+        .event.fade-out {
+            opacity: 0;
+            transform: translateX(-10px);
+        }
+        
+        .event.fade-in {
+            animation: fadeIn 0.4s ease forwards;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .month-section {
+            transition: all 0.3s ease;
         }
         
         @media (max-width: 600px) {
@@ -263,26 +298,26 @@
                     <span>Field Trips</span>
                 </div>
                 <div class="legend-item">
-                    <div class="legend-color color-regular"></div>
+                    <div class="legend-color color-all-school"></div>
                     <span>All LS Events</span>
                 </div>
             </div>
 
             <div class="month-section">
                 <h2 class="month-header">February 2026</h2>
-                <div class="event parent-event no-school" data-grade="all">
+                <div class="event parent-event no-school all-school" data-grade="all">
                     <span class="event-date">Thursday, February 5</span>
                     <span class="event-description">Lower School Parent Conferences, no LS classes</span>
                 </div>
-                <div class="event parent-event no-school" data-grade="all">
+                <div class="event parent-event no-school all-school" data-grade="all">
                     <span class="event-date">Friday, February 6</span>
                     <span class="event-description">Lower School Parent Conferences, no LS classes</span>
                 </div>
-                <div class="event no-school" data-grade="all">
+                <div class="event no-school all-school" data-grade="all">
                     <span class="event-date">Monday, February 16</span>
                     <span class="event-description">President's Day, school closed</span>
                 </div>
-                <div class="event no-school" data-grade="all">
+                <div class="event no-school all-school" data-grade="all">
                     <span class="event-date">Tuesday, February 17</span>
                     <span class="event-description">Lunar New Year, school closed</span>
                 </div>
@@ -330,7 +365,7 @@
                     <span class="event-date">Friday, March 13</span>
                     <span class="event-description">3S Family History Museum, parents invited</span>
                 </div>
-                <div class="event" data-grade="all">
+                <div class="event all-school" data-grade="all">
                     <span class="event-date">Monday, March 16 – Thursday, March 19</span>
                     <span class="event-description">Spirit Week</span>
                 </div>
@@ -338,11 +373,11 @@
                     <span class="event-date">Wednesday, March 18</span>
                     <span class="event-description">Ashokan Informational Talk; for parents (8:30 am)</span>
                 </div>
-                <div class="event no-school" data-grade="all">
+                <div class="event no-school all-school" data-grade="all">
                     <span class="event-date">Friday, March 20</span>
                     <span class="event-description">Eid al Fitr, school closed</span>
                 </div>
-                <div class="event no-school" data-grade="all">
+                <div class="event no-school all-school" data-grade="all">
                     <span class="event-date">Monday, March 23 – Friday, April 3</span>
                     <span class="event-description">Spring Break, school closed</span>
                 </div>
@@ -354,7 +389,7 @@
 
             <div class="month-section">
                 <h2 class="month-header">April 2026</h2>
-                <div class="event" data-grade="all">
+                <div class="event all-school" data-grade="all">
                     <span class="event-date">Monday, April 6</span>
                     <span class="event-description">Classes resume</span>
                 </div>
@@ -390,7 +425,7 @@
                     <span class="event-date">Friday, April 24</span>
                     <span class="event-description">2H Family Friday, parents invited (8:00 am)</span>
                 </div>
-                <div class="event parent-event" data-grade="all">
+                <div class="event parent-event all-school" data-grade="all">
                     <span class="event-date">Tuesday, April 28</span>
                     <span class="event-description">Science Fair, parents invited</span>
                 </div>
@@ -418,11 +453,11 @@
                     <span class="event-date">Friday, May 8</span>
                     <span class="event-description">Grade 4 Philadelphia Trip</span>
                 </div>
-                <div class="event no-school" data-grade="all">
+                <div class="event no-school all-school" data-grade="all">
                     <span class="event-date">Monday, May 25</span>
                     <span class="event-description">Memorial Day, school closed</span>
                 </div>
-                <div class="event no-school" data-grade="all">
+                <div class="event no-school all-school" data-grade="all">
                     <span class="event-date">Tuesday, May 26</span>
                     <span class="event-description">Commencement, no school</span>
                 </div>
@@ -438,15 +473,15 @@
                     <span class="event-date">Tuesday, June 2</span>
                     <span class="event-description">Grade 2 NYC Festival, parents invited</span>
                 </div>
-                <div class="event" data-grade="all">
+                <div class="event all-school" data-grade="all">
                     <span class="event-date">Friday, June 5</span>
                     <span class="event-description">Lower School Field Day</span>
                 </div>
-                <div class="event" data-grade="all">
+                <div class="event all-school" data-grade="all">
                     <span class="event-date">Thursday, June 11</span>
                     <span class="event-description">Last day of Lower School Classes and Afterschool</span>
                 </div>
-                <div class="event" data-grade="all">
+                <div class="event all-school" data-grade="all">
                     <span class="event-date">Friday, June 12</span>
                     <span class="event-description">Lower School Moving Up Day (12:30–2:00 pm)</span>
                 </div>
@@ -464,28 +499,55 @@
                 // Remove active class from all buttons
                 filterButtons.forEach(btn => btn.classList.remove('active'));
                 
-                // Add active class to clicked button
+                // Add active class to clicked button with a slight scale effect
                 button.classList.add('active');
                 
                 // Get selected grade
                 const selectedGrade = button.dataset.grade;
                 
-                // Filter events
+                // First, fade out all events
                 events.forEach(event => {
-                    const eventGrade = event.dataset.grade;
-                    const isSchoolClosed = event.classList.contains('no-school');
-                    
-                    if (selectedGrade === 'all') {
-                        // Show all events when "All Grades" is selected
-                        event.classList.remove('hidden');
-                    } else if (eventGrade === selectedGrade || eventGrade === 'all' || isSchoolClosed) {
-                        // Show events that match the selected grade OR are for all grades OR school closed events
-                        event.classList.remove('hidden');
-                    } else {
-                        // Hide everything else
-                        event.classList.add('hidden');
-                    }
+                    event.classList.add('fade-out');
                 });
+                
+                // Wait for fade out, then filter and fade in
+                setTimeout(() => {
+                    let visibleIndex = 0;
+                    
+                    events.forEach((event, index) => {
+                        const eventGrade = event.dataset.grade;
+                        const isSchoolClosed = event.classList.contains('no-school');
+                        
+                        // Remove fade-out class
+                        event.classList.remove('fade-out');
+                        
+                        if (selectedGrade === 'all') {
+                            // Show all events when "All Grades" is selected
+                            event.classList.remove('hidden');
+                            event.style.animationDelay = `${visibleIndex * 0.05}s`;
+                            event.classList.add('fade-in');
+                            visibleIndex++;
+                        } else if (eventGrade === selectedGrade || eventGrade === 'all' || isSchoolClosed) {
+                            // Show events that match the selected grade OR are for all grades OR school closed events
+                            event.classList.remove('hidden');
+                            event.style.animationDelay = `${visibleIndex * 0.05}s`;
+                            event.classList.add('fade-in');
+                            visibleIndex++;
+                        } else {
+                            // Hide everything else
+                            event.classList.add('hidden');
+                            event.classList.remove('fade-in');
+                        }
+                    });
+                }, 200);
+                
+                // Clean up animation classes after animation completes
+                setTimeout(() => {
+                    events.forEach(event => {
+                        event.classList.remove('fade-in');
+                        event.style.animationDelay = '';
+                    });
+                }, 1000);
             });
         });
     </script>
