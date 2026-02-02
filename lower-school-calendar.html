@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collegiate Lower School Important Dates | Feb-June 2026</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 2em;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.2em;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+        
+        .content {
+            padding: 40px 30px;
+        }
+        
+        .month-section {
+            margin-bottom: 40px;
+        }
+        
+        .month-header {
+            font-size: 1.8em;
+            color: #667eea;
+            font-weight: 700;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+        
+        .event {
+            padding: 15px 20px;
+            margin-bottom: 12px;
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+        
+        .event:hover {
+            background: #e9ecef;
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .event-date {
+            font-weight: 700;
+            color: #495057;
+            font-size: 1em;
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .event-description {
+            color: #6c757d;
+            font-size: 0.95em;
+        }
+        
+        .no-school {
+            border-left-color: #e74c3c;
+            background: #ffebee;
+        }
+        
+        .no-school:hover {
+            background: #ffcdd2;
+        }
+        
+        .parent-event {
+            border-left-color: #3498db;
+            background: #e3f2fd;
+        }
+        
+        .parent-event:hover {
+            background: #bbdefb;
+        }
+        
+        .field-trip {
+            border-left-color: #2ecc71;
+            background: #e8f5e9;
+        }
+        
+        .field-trip:hover {
+            background: #c8e6c9;
+        }
+        
+        .legend {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9em;
+        }
+        
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+        }
+        
+        .color-no-school { background: #e74c3c; }
+        .color-parent { background: #3498db; }
+        .color-trip { background: #2ecc71; }
+        .color-regular { background: #667eea; }
+        
+        .filters {
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .filters h3 {
+            margin-bottom: 15px;
+            color: #495057;
+            font-size: 1.1em;
+        }
+        
+        .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .filter-btn {
+            padding: 8px 16px;
+            border: 2px solid #667eea;
+            background: white;
+            color: #667eea;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9em;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+        
+        .filter-btn:hover {
+            background: #f0f0ff;
+        }
+        
+        .filter-btn.active {
+            background: #667eea;
+            color: white;
+        }
+        
+        .event.hidden {
+            display: none;
+        }
+        
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            
+            header {
+                padding: 30px 20px;
+            }
+            
+            h1 {
+                font-size: 1.5em;
+            }
+            
+            .subtitle {
+                font-size: 1em;
+            }
+            
+            .content {
+                padding: 20px 15px;
+            }
+            
+            .month-header {
+                font-size: 1.5em;
+            }
+            
+            .filter-buttons {
+                gap: 8px;
+            }
+            
+            .filter-btn {
+                font-size: 0.85em;
+                padding: 6px 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Collegiate Lower School</h1>
+            <div class="subtitle">Important Dates | February – June 2026</div>
+        </header>
+        
+        <div class="content">
+            <div class="filters">
+                <h3>Filter by Grade:</h3>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-grade="all">All Grades</button>
+                    <button class="filter-btn" data-grade="k">Kindergarten</button>
+                    <button class="filter-btn" data-grade="1">Grade 1</button>
+                    <button class="filter-btn" data-grade="2">Grade 2</button>
+                    <button class="filter-btn" data-grade="3">Grade 3</button>
+                    <button class="filter-btn" data-grade="4">Grade 4</button>
+                </div>
+            </div>
+            
+            <div class="legend">
+                <div class="legend-item">
+                    <div class="legend-color color-no-school"></div>
+                    <span>School Closed</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color color-parent"></div>
+                    <span>Parent Events</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color color-trip"></div>
+                    <span>Field Trips</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color color-regular"></div>
+                    <span>All LS Events</span>
+                </div>
+            </div>
+
+            <div class="month-section">
+                <h2 class="month-header">February 2026</h2>
+                <div class="event parent-event no-school" data-grade="all">
+                    <span class="event-date">Thursday, February 5</span>
+                    <span class="event-description">Lower School Parent Conferences, no LS classes</span>
+                </div>
+                <div class="event parent-event no-school" data-grade="all">
+                    <span class="event-date">Friday, February 6</span>
+                    <span class="event-description">Lower School Parent Conferences, no LS classes</span>
+                </div>
+                <div class="event no-school" data-grade="all">
+                    <span class="event-date">Monday, February 16</span>
+                    <span class="event-description">President's Day, school closed</span>
+                </div>
+                <div class="event no-school" data-grade="all">
+                    <span class="event-date">Tuesday, February 17</span>
+                    <span class="event-description">Lunar New Year, school closed</span>
+                </div>
+                <div class="event field-trip" data-grade="2">
+                    <span class="event-date">Monday, February 23</span>
+                    <span class="event-description">Grade 2 Brooklyn Bridge Trip</span>
+                </div>
+                <div class="event parent-event" data-grade="1">
+                    <span class="event-date">Friday, February 27</span>
+                    <span class="event-description">1S Math Morning, parents invited (8:30 am)</span>
+                </div>
+                <div class="event parent-event" data-grade="2">
+                    <span class="event-date">Friday, February 27</span>
+                    <span class="event-description">2H Family Friday, parents invited (8:00 am)</span>
+                </div>
+            </div>
+
+            <div class="month-section">
+                <h2 class="month-header">March 2026</h2>
+                <div class="event field-trip" data-grade="2">
+                    <span class="event-date">Tuesday, March 3</span>
+                    <span class="event-description">Grade 2 Queens Museum Trip</span>
+                </div>
+                <div class="event parent-event" data-grade="1">
+                    <span class="event-date">Wednesday, March 4</span>
+                    <span class="event-description">1T Math Morning, parents invited (8:30 am)</span>
+                </div>
+                <div class="event parent-event" data-grade="k">
+                    <span class="event-date">Thursday, March 5</span>
+                    <span class="event-description">K1 Math Morning, parents invited (8:30 am)</span>
+                </div>
+                <div class="event parent-event" data-grade="k">
+                    <span class="event-date">Friday, March 6</span>
+                    <span class="event-description">K2 Math Morning, parents invited (8:30 am)</span>
+                </div>
+                <div class="event parent-event" data-grade="2">
+                    <span class="event-date">Friday, March 6</span>
+                    <span class="event-description">2E Family Friday, Math Morning, parents invited (8:00 am)</span>
+                </div>
+                <div class="event parent-event" data-grade="3">
+                    <span class="event-date">Friday, March 6</span>
+                    <span class="event-description">3H Family History Museum, parents invited</span>
+                </div>
+                <div class="event parent-event" data-grade="3">
+                    <span class="event-date">Friday, March 13</span>
+                    <span class="event-description">3S Family History Museum, parents invited</span>
+                </div>
+                <div class="event" data-grade="all">
+                    <span class="event-date">Monday, March 16 – Thursday, March 19</span>
+                    <span class="event-description">Spirit Week</span>
+                </div>
+                <div class="event parent-event" data-grade="4">
+                    <span class="event-date">Wednesday, March 18</span>
+                    <span class="event-description">Ashokan Informational Talk; for parents (8:30 am)</span>
+                </div>
+                <div class="event no-school" data-grade="all">
+                    <span class="event-date">Friday, March 20</span>
+                    <span class="event-description">Eid al Fitr, school closed</span>
+                </div>
+                <div class="event no-school" data-grade="all">
+                    <span class="event-date">Monday, March 23 – Friday, April 3</span>
+                    <span class="event-description">Spring Break, school closed</span>
+                </div>
+                <div class="event field-trip" data-grade="3">
+                    <span class="event-date">March TBD</span>
+                    <span class="event-description">Grade 3 Tenement Museum Trip</span>
+                </div>
+            </div>
+
+            <div class="month-section">
+                <h2 class="month-header">April 2026</h2>
+                <div class="event" data-grade="all">
+                    <span class="event-date">Monday, April 6</span>
+                    <span class="event-description">Classes resume</span>
+                </div>
+                <div class="event parent-event" data-grade="4">
+                    <span class="event-date">Wednesday, April 8</span>
+                    <span class="event-description">Grade 4 to 5 Transition Night; parents invited (5:30–7:00 pm)</span>
+                </div>
+                <div class="event field-trip" data-grade="3">
+                    <span class="event-date">Friday, April 10</span>
+                    <span class="event-description">Grade 3 Museum of Chinese America Trip</span>
+                </div>
+                <div class="event" data-grade="4">
+                    <span class="event-date">Monday, April 13 – Thursday, April 16</span>
+                    <span class="event-description">Grade 4 ERB testing</span>
+                </div>
+                <div class="event parent-event" data-grade="3">
+                    <span class="event-date">Tuesday, April 14</span>
+                    <span class="event-description">3S Math Morning, parents invited</span>
+                </div>
+                <div class="event field-trip" data-grade="k">
+                    <span class="event-date">Friday, April 17</span>
+                    <span class="event-description">Kindergarten Museum of Natural History Trip</span>
+                </div>
+                <div class="event parent-event" data-grade="3">
+                    <span class="event-date">Tuesday, April 21</span>
+                    <span class="event-description">3H Math Morning, parents invited</span>
+                </div>
+                <div class="event field-trip" data-grade="4">
+                    <span class="event-date">Wednesday, April 22 – Friday, April 24</span>
+                    <span class="event-description">Grade 4 Overnight Trip to Ashokan</span>
+                </div>
+                <div class="event parent-event" data-grade="2">
+                    <span class="event-date">Friday, April 24</span>
+                    <span class="event-description">2H Family Friday, parents invited (8:00 am)</span>
+                </div>
+                <div class="event parent-event" data-grade="all">
+                    <span class="event-date">Tuesday, April 28</span>
+                    <span class="event-description">Science Fair, parents invited</span>
+                </div>
+                <div class="event field-trip" data-grade="2">
+                    <span class="event-date">Thursday, April 30</span>
+                    <span class="event-description">Grade 2 Transit Museum Trip</span>
+                </div>
+            </div>
+
+            <div class="month-section">
+                <h2 class="month-header">May 2026</h2>
+                <div class="event parent-event" data-grade="2">
+                    <span class="event-date">Friday, May 1</span>
+                    <span class="event-description">2E Family Friday, parents invited (8:00am)</span>
+                </div>
+                <div class="event field-trip" data-grade="k">
+                    <span class="event-date">Friday, May 1</span>
+                    <span class="event-description">Kindergarten Intrepid Trip</span>
+                </div>
+                <div class="event field-trip" data-grade="3">
+                    <span class="event-date">Thursday, May 7</span>
+                    <span class="event-description">Grade 3 Ellis Island Trip</span>
+                </div>
+                <div class="event field-trip" data-grade="4">
+                    <span class="event-date">Friday, May 8</span>
+                    <span class="event-description">Grade 4 Philadelphia Trip</span>
+                </div>
+                <div class="event no-school" data-grade="all">
+                    <span class="event-date">Monday, May 25</span>
+                    <span class="event-description">Memorial Day, school closed</span>
+                </div>
+                <div class="event no-school" data-grade="all">
+                    <span class="event-date">Tuesday, May 26</span>
+                    <span class="event-description">Commencement, no school</span>
+                </div>
+                <div class="event parent-event" data-grade="4">
+                    <span class="event-date">May TBD</span>
+                    <span class="event-description">Grade 4 Changemaker Presentations, parents invited</span>
+                </div>
+            </div>
+
+            <div class="month-section">
+                <h2 class="month-header">June 2026</h2>
+                <div class="event parent-event" data-grade="2">
+                    <span class="event-date">Tuesday, June 2</span>
+                    <span class="event-description">Grade 2 NYC Festival, parents invited</span>
+                </div>
+                <div class="event" data-grade="all">
+                    <span class="event-date">Friday, June 5</span>
+                    <span class="event-description">Lower School Field Day</span>
+                </div>
+                <div class="event" data-grade="all">
+                    <span class="event-date">Thursday, June 11</span>
+                    <span class="event-description">Last day of Lower School Classes and Afterschool</span>
+                </div>
+                <div class="event" data-grade="all">
+                    <span class="event-date">Friday, June 12</span>
+                    <span class="event-description">Lower School Moving Up Day (12:30–2:00 pm)</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Filter functionality
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const events = document.querySelectorAll('.event');
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                // Get selected grade
+                const selectedGrade = button.dataset.grade;
+                
+                // Filter events
+                events.forEach(event => {
+                    const eventGrade = event.dataset.grade;
+                    const isSchoolClosed = event.classList.contains('no-school');
+                    
+                    if (selectedGrade === 'all') {
+                        // Show all events when "All Grades" is selected
+                        event.classList.remove('hidden');
+                    } else if (eventGrade === selectedGrade || eventGrade === 'all' || isSchoolClosed) {
+                        // Show events that match the selected grade OR are for all grades OR school closed events
+                        event.classList.remove('hidden');
+                    } else {
+                        // Hide everything else
+                        event.classList.add('hidden');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
