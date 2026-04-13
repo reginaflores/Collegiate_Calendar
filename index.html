@@ -177,6 +177,25 @@
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
+            align-items: center;
+        }
+
+        .download-btn {
+            padding: 8px 16px;
+            border: 2px solid #2ecc71;
+            background: white;
+            color: #2ecc71;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9em;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            margin-left: auto;
+        }
+
+        .download-btn:hover {
+            background: #2ecc71;
+            color: white;
         }
         
         .filter-btn {
@@ -282,6 +301,8 @@
                     <button class="filter-btn" data-grade="2">Grade 2</button>
                     <button class="filter-btn" data-grade="3">Grade 3</button>
                     <button class="filter-btn" data-grade="4">Grade 4</button>
+                    <span style="font-size: 0.85em; color: #6c757d; font-style: italic;">Select your grade or All Grades, then:</span>
+                    <button class="download-btn" id="downloadIcs">⬇ Download to Calendar</button>
                 </div>
             </div>
             
@@ -562,6 +583,66 @@
                     });
                 }, 1000);
             });
+        });
+        // ICS download
+        const MONTHS = { January:1, February:2, March:3, April:4, May:5, June:6,
+                         July:7, August:8, September:9, October:10, November:11, December:12 };
+
+        function parseDate(str) {
+            // e.g. "Thursday, February 5" or just "February 5"
+            const m = str.match(/(\w+)\s+(\d+)/);
+            if (!m) return null;
+            const month = MONTHS[m[1]];
+            const day = parseInt(m[2]);
+            if (!month) return null;
+            return { year: 2026, month, day };
+        }
+
+        function toIcsDate(d) {
+            return `${d.year}${String(d.month).padStart(2,'0')}${String(d.day).padStart(2,'0')}`;
+        }
+
+        function nextDay(d) {
+            const dt = new Date(d.year, d.month - 1, d.day + 1);
+            return { year: dt.getFullYear(), month: dt.getMonth() + 1, day: dt.getDate() };
+        }
+
+        document.getElementById('downloadIcs').addEventListener('click', () => {
+            const visibleEvents = Array.from(document.querySelectorAll('.event:not(.hidden)'));
+            let ics = 'BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//Collegiate Calendar//EN\r\nCALSCALE:GREGORIAN\r\n';
+
+            visibleEvents.forEach(el => {
+                const dateText = el.querySelector('.event-date').textContent.trim();
+                const desc = el.querySelector('.event-description').textContent.trim();
+
+                let startD, endD;
+                if (dateText.includes('–')) {
+                    const parts = dateText.split('–');
+                    startD = parseDate(parts[0].trim());
+                    endD = parseDate(parts[1].trim());
+                    if (endD) endD = nextDay(endD);
+                } else {
+                    startD = parseDate(dateText);
+                    endD = startD ? nextDay(startD) : null;
+                }
+
+                if (!startD || !endD) return;
+
+                ics += 'BEGIN:VEVENT\r\n';
+                ics += `DTSTART;VALUE=DATE:${toIcsDate(startD)}\r\n`;
+                ics += `DTEND;VALUE=DATE:${toIcsDate(endD)}\r\n`;
+                ics += `SUMMARY:${desc}\r\n`;
+                ics += 'END:VEVENT\r\n';
+            });
+
+            ics += 'END:VCALENDAR';
+
+            const blob = new Blob([ics], { type: 'text/calendar' });
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            const activeGrade = document.querySelector('.filter-btn.active').textContent.trim();
+            a.download = `Collegiate_Calendar_${activeGrade.replace(/\s+/g,'_')}.ics`;
+            a.click();
         });
     </script>
 </body>
